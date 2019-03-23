@@ -8,6 +8,7 @@ MuslimDesaigner.com is an Application Development with Codeigniter Framework for
 Versi Update Information
 *******************
 Versi Beta
+
 - Update version database structure
 - Update version editing css template
 - Update version login and registration page
