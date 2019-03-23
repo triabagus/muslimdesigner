@@ -15,6 +15,7 @@ Versi Beta
 - Update version title dinamic 
 - Update version form validation , session alert , encripsi 
 - Update version form registration success
+- Update version form login and logout(url)
 
 **************************
 Web Server
