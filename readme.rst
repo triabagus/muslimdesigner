@@ -17,6 +17,7 @@ Versi Beta
 - Update version form registration success
 - Update version form login and logout(url)
 - Update version authentication admin and member in dashboard admin
+- Update version menu management database insert manual
 
 **************************
 Web Server
