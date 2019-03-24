@@ -16,6 +16,7 @@ Versi Beta
 - Update version form validation , session alert , encripsi 
 - Update version form registration success
 - Update version form login and logout(url)
+- Update version authentication admin and member in dashboard admin
 
 **************************
 Web Server
