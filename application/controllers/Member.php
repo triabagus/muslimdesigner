@@ -5,7 +5,7 @@ class Member extends CI_Controller
 {
     public function index(){
         $data['admin']  =$this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title']  = 'Dashboard Member | Muslimdesaigner.com';
+        $data['title']  = 'My Profile';
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
