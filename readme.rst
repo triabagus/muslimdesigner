@@ -19,7 +19,11 @@ Versi Beta
 - Update version authentication admin and member in dashboard admin
 - Update version menu management(1) database insert manual
 - Update version menu and submenu add CRUD 
-- Update version page admin , member , menu . authentication menu management session and role. with helper 
+- Update version page admin , member , menu . authentication menu management session and role. with helper
+- Update version access role page
+- Update version helper check_access function
+- Update version ajax check_access checked (how to with attribut)
+ 
 
 **************************
 Web Server
