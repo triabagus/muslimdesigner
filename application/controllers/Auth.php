@@ -8,8 +8,17 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
     }
+
     public function index()
     {
+        /**
+         * Make to auth user and admin don't to url
+         */
+
+        if($this->session->userdata('email')){
+            redirect('member');
+        }
+
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
         if ($this->form_validation->run() == false){
@@ -66,6 +75,14 @@ class Auth extends CI_Controller
 
     public function registration()
     {
+        /**
+         * Make to auth user and admin don't to url
+         */
+
+        if($this->session->userdata('email')){
+            redirect('member');
+        }
+
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[admin.email]', [
             'is_unique'     => 'This email has already registered :)'

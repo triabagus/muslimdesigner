@@ -9,20 +9,22 @@ Versi Update Information
 *******************
 Versi Beta
 
-- Update version database structure
-- Update version editing css template
-- Update version login and registration page
-- Update version title dinamic 
-- Update version form validation , session alert , encripsi 
-- Update version form registration success
-- Update version form login and logout(url)
-- Update version authentication admin and member in dashboard admin
-- Update version menu management(1) database insert manual
-- Update version menu and submenu add CRUD 
-- Update version page admin , member , menu . authentication menu management session and role. with helper
-- Update version access role page
-- Update version helper check_access function
-- Update version ajax check_access checked (how to with attribut)
+- Update version database structure : 7-March-2019
+- Update version editing css template : 9-March-2019
+- Update version login and registration page : 9-March-2019
+- Update version title dinamic : 14-March-2019
+- Update version form validation , session alert , encripsi : 14-March-2019
+- Update version form registration success : 17-March-2019
+- Update version form login and logout(url) : 17-March-2019
+- Update version authentication admin and member in dashboard admin : 23-March-2019
+- Update version menu management(1) database insert manual : 25-March-2019
+- Update version menu and submenu add CRUD : 25-March-2019
+- Update version page admin , member , menu . authentication menu management session and role. with helper : 27-March-2019
+- Update version access role page : 29-March-2019
+- Update version helper check_access function : 29-March-2019
+- Update version ajax check_access checked (how to with attribut) : 29-March-2019
+- Update version auth redirect member url hecked : 30-March-2019
+- Update version edit profile and image upload codeigniter : 30-March-2019
  
 
 **************************
