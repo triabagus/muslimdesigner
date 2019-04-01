@@ -79,4 +79,55 @@ class Member extends CI_Controller
         }
     }
 
+    /**
+     * Function change password member
+     */
+    public function changePassword(){
+        $data['admin']  =$this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        // Same in filed title database for title because active menu 
+        $data['title']  = 'Change Password';
+
+        $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
+        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[8]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|matches[new_password1]');
+
+        if($this->form_validation->run() == false){
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('member/changepassword', $data);
+            $this->load->view('templates/footer');
+        }else{
+            $current_password   = $this->input->post('current_password');
+            $new_password       = $this->input->post('new_password1');
+
+            // verify password is same in database
+            if(!password_verify($current_password , $data['admin']['password'])){
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Wrong is current password :)</div>');
+                redirect('member/changepassword');
+            }else{
+                // if current password and new password post same 
+                if($current_password == $new_password){
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    New password cannot be the same as current password :)</div>');
+                    redirect('member/changepassword');
+                }else{
+                    // is password is okay
+                    $hash_password  = password_hash($new_password, PASSWORD_DEFAULT);
+
+                    $this->db->set('password', $hash_password);
+                    $this->db->where('email', $this->session->userdata('email'));
+                    $this->db->update('admin');
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> New password is updated :)</div>');
+                    redirect('member/changepassword');
+                }
+
+            }
+
+        }
+
+    }
+
 }

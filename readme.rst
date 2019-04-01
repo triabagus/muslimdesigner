@@ -25,7 +25,7 @@ Versi Beta
 - Update version ajax check_access checked (how to with attribut) : 29-March-2019
 - Update version auth redirect member url hecked : 30-March-2019
 - Update version edit profile and image upload codeigniter : 30-March-2019
- 
+- Update version change password for member or admin : 1-April-2019
 
 **************************
 Web Server
