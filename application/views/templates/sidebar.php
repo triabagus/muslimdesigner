@@ -38,6 +38,7 @@
                     ";
       $subMenu = $this->db->query($querySubMenu)->result_array();
     ?>
+<!-- sidebar active is same title in database -->
     <?php foreach($subMenu as $sm):?>
     <?php if($title == $sm['title']):?>
       <li class="nav-item active">
@@ -49,6 +50,7 @@
           <span><?= $sm['title'];?></span></a>
       </li>
     <?php endforeach;?>
+
     <hr class="sidebar-divider mt-3">
 <?php endforeach;?>
 
