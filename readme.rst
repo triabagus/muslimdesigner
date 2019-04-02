@@ -27,6 +27,7 @@ Versi Beta
 - Update version edit profile and image upload codeigniter : 30-March-2019
 - Update version change password for member or admin : 1-April-2019
 - Update version activation user with email and time validation 24 hour : 1-April-2019
+- Update version change password with send email token : 2 April 2019
 
 **************************
 Web Server
