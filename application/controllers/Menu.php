@@ -64,6 +64,56 @@ class Menu extends CI_Controller
                     New submenu added :)</div>');
                     redirect('menu/submenu');
         }
-
     }
+
+    public function editMenu($id){
+        $data['admin']   = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $data['title']   = 'Edit Menu';
+
+        $data['menu']   = $this->db->get_where('menu', ['id' => $id])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('menu/edit-menu', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function updateMenu(){
+        $this->form_validation->set_rules('menu', 'Nama Menu', 'required|trim');
+        $id_menu    = $this->input->post('id');
+        $name_menu  = $this->input->post('menu');
+
+        if($this->form_validation->run() == false){
+
+            $data['admin']  = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $data['title']  = 'Edit Menu';
+            $data['menu']   = $this->db->get_where('menu', ['id' => $id_menu])->row_array();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('menu/edit-menu', $data);
+            $this->load->view('templates/footer');
+        }else{
+            
+            $this->db->set('name_menu', $name_menu);
+            $this->db->where('id', $id_menu);
+            $this->db->update('menu');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> The menu is updated :)</div>');
+            redirect('menu');
+        }
+    }
+
+    public function deleteMenu(){
+        $id_menu    = $this->input->post('id');
+        
+        $this->db->where('id', $id_menu);
+        $this->db->delete('menu');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success role="alert"> The menu is deleted :)</div>');
+        redirect('menu');
+    }
+
 } 

@@ -22,15 +22,23 @@ class Admin extends CI_Controller
 
     public function role(){
         $data['admin']  = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title']  = 'Role';
-        
+        $data['title']  = 'Role';   
         $data['role']   = $this->db->get('role')->result_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/role', $data);
-        $this->load->view('templates/footer');
+        $this->form_validation->set_rules('role', 'Nama Role', 'required|trim');
+
+        if($this->form_validation->run() == false){
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/role', $data);
+            $this->load->view('templates/footer');
+        }else{
+            $this->db->insert('role', ['name_role' => $this->input->post('role')]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> The role is inserted :)</div>');
+            redirect('admin/role');
+        }
+
     }
 
     public function roleAccess($role_id){
@@ -69,5 +77,54 @@ class Admin extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Access Change :)</div>');
+    }
+
+    public function editRole($role_id){
+        $data['admin']  = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $data['title']  = 'Edit Role';
+        $data['role']   = $this->db->get_where('role', ['id_role' => $role_id])->row_array();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit-role', $data);
+            $this->load->view('templates/footer');
+    }
+
+    public function updateRole(){
+        $this->form_validation->set_rules('role', 'Nama Role', 'required|trim');
+        $id_role    = $this->input->post('id');
+        $name_role  = $this->input->post('role');
+
+        if($this->form_validation->run() == false){
+
+            $data['admin']  = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $data['title']  = 'Edit Role';
+            $data['role']   = $this->db->get_where('role', ['id_role' => $id_role])->row_array();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit-role', $data);
+            $this->load->view('templates/footer');
+        }else{
+            
+            $this->db->set('name_role', $name_role);
+            $this->db->where('id_role', $id_role);
+            $this->db->update('role');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> The role is updated :)</div>');
+            redirect('admin/role');
+        }
+    }
+
+    public function deleteRole(){
+        $id_role    = $this->input->post('idRole');
+        
+        $this->db->where('id_role', $id_role);
+        $this->db->delete('role');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success role="alert"> The role is deleted :)</div>');
+        redirect('admin/role');
     }
 }

@@ -1,10 +1,9 @@
- <!-- Begin Page Content -->
- <div class="container-fluid">
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">Submenu Management</h1>
     
-
     <div class="row">
         <div class="col-lg">
         <?php if(validation_errors()):?>
@@ -14,7 +13,7 @@
         <?php endif;?>
         
         <?= $this->session->flashdata('message');?>
-        <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Menu</a>
+        <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Submenu</a>
 
         <table class="table table-hover">
             <thead>
@@ -59,31 +58,31 @@
 
 <!-- Modal Add Menu -->
 <div class="modal fade" id="newSubMenuModal" tabindex="-1" role="dialog" aria-labelledby="newSubMenuModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newSubMenuModalLabel">Add New Sub Menu</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="newSubMenuModalLabel">Add New Sub Menu</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
-      <form action="<?= base_url('menu/submenu');?>" method="post">
-      <div class="modal-body">
+        <form action="<?= base_url('menu/submenu');?>" method="post">
+        <div class="modal-body">
 
         <div class="form-group">
             <input type="text" class="form-control" id="title" name="title" placeholder="Submenu title">
         </div>
 
         <div class="form-group">
+
             <select name="menu_id" id="menu_id" class="form-control">
-                <option value="">Select menu</option>
-                
+                <option value="">Select menu</option>            
                 <?php foreach($menu as $m):?>
                 <option value="<?= $m['id']?>"><?= $m['name_menu']?></option>
                 <?php endforeach;?>
-
             </select>
+
         </div>
         
         <div class="form-group">
@@ -105,8 +104,8 @@
       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
       </form>
 

@@ -28,6 +28,11 @@ Versi Beta
 - Update version change password for member or admin : 1-April-2019
 - Update version activation user with email and time validation 24 hour : 1-April-2019
 - Update version change password with send email token : 2 April 2019
+- Update version update role : 10 April 2019
+- Update version insert, delete role : 10 April 2019 (14.41 wib)
+- Update version update menu : 10 April 2019 (15.03 wib)
+- Update version delete menu : 10 April 2019 (20.29 wib)
+- Update version update submenu : *
 
 **************************
 Web Server
