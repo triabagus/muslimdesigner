@@ -73,8 +73,14 @@ class Member extends CI_Controller
             $this->db->where('email', $email);
             $this->db->update('admin');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Your profile has been updated :)</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Your profile has been updated :)
+            
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>');
+
             redirect('member');
         }
     }
@@ -103,15 +109,30 @@ class Member extends CI_Controller
 
             // verify password is same in database
             if(!password_verify($current_password , $data['admin']['password'])){
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                Wrong is current password :)</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Wrong is current password :)
+                
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>');
+
                 redirect('member/changepassword');
+
             }else{
                 // if current password and new password post same 
                 if($current_password == $new_password){
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    New password cannot be the same as current password :)</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    New password cannot be the same as current password :)
+                    
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>');
+
                     redirect('member/changepassword');
+                    
                 }else{
                     // is password is okay
                     $hash_password  = password_hash($new_password, PASSWORD_DEFAULT);
@@ -120,7 +141,14 @@ class Member extends CI_Controller
                     $this->db->where('email', $this->session->userdata('email'));
                     $this->db->update('admin');
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> New password is updated :)</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert"> New password is updated :)
+                    
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        
+                    </div>');
+
                     redirect('member/changepassword');
                 }
 

@@ -57,18 +57,39 @@ class Auth extends CI_Controller
                         redirect('member');
                     }
                 }else{
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    Wrong password :)</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Wrong password :)
+                    
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>');
+
                     redirect('auth');
                 }
             }else{
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                This email has been not actived :)</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                This email has been not actived :)
+                
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>');
+
                 redirect('auth');
             }
         }else{
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Email not is registered :)</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Email not is registered :)
+            
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>');
+
             redirect('auth');
         }
     }
@@ -125,8 +146,15 @@ class Auth extends CI_Controller
             // method _sendEmail modefayer private
             $this->_sendEmail($token, 'verify');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Congratulation , your account has been created. Please your activated account :)</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Congratulation , your account has been created. Please your activated account :)
+            
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>');
+
             redirect('auth');
         }
     }
@@ -196,8 +224,15 @@ class Auth extends CI_Controller
 
                     $this->db->delete('user_token', ['email', $email]);
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                    '. $email .' has been activated. Please your login :)</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    '. $email .' has been activated. Please your login :)
+                    
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>');
+
                     redirect('auth');
                 }else{
 
@@ -210,14 +245,28 @@ class Auth extends CI_Controller
                 }
 
             }else{
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                Your activate is failed :) Wrong is token .</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Your activate is failed :) Wrong is token .
+                
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>');
+
                 redirect('auth');
             }
 
         }else{
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Your activate is failed :) Wrong is email .</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Your activate is failed :) Wrong is email .
+            
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>');
+
             redirect('auth');
         }
 
@@ -228,8 +277,15 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        You have been logged out :)</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        You have been logged out :)
+        
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>');
+        
         redirect('auth');
     }
 
@@ -269,8 +325,15 @@ class Auth extends CI_Controller
                 Check your email for reset password :)</div>');
                 redirect('auth/forgotpassword');
             }else{
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                Your email not registered or activated :)</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Your email not registered or activated :)
+                
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>');
+
                 redirect('auth/forgotpassword');
             }
 
@@ -295,14 +358,28 @@ class Auth extends CI_Controller
                 $this->session->set_userdata('reset_email', $email);
                 $this->changePassword();
             }else{
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                Reset password failed. Wrong token :)</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Reset password failed. Wrong token :)
+                
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>');
+
                 redirect('auth');
             }
             
         }else{
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Reset password failed. Wrong email :)</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Reset password failed. Wrong email :)
+            
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>');
+
             redirect('auth');
         }
 
@@ -337,8 +414,15 @@ class Auth extends CI_Controller
 
             $this->session->unset_userdata('reset_email');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Your password has been change. Please your login :)</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible" role="alert">
+            Your password has been change. Please your login :)
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                
+            </div>');
+            
             redirect('auth');
         }
     }

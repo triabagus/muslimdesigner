@@ -40,8 +40,8 @@
                 <td><?= $sm['icon'];?></td>
                 <td><?= $sm['is_active'];?></td>
                 <td>
-                    <a href="#" class="badge badge-success">Edit</a>
-                    <a href="#" class="badge badge-danger">Delete</a>
+                    <a href="<?= base_url('menu/editSubMenu/'). $sm['id'];?>" class="badge badge-success">Edit</a>
+                    <a href="#" class="badge badge-danger" data-toggle="modal" data-target="#deleteSubMenuModal<?= $sm['id'];?>">Delete</a>
                 </td>
                 </tr>
             <?php endforeach;?>
@@ -60,55 +60,85 @@
 <div class="modal fade" id="newSubMenuModal" tabindex="-1" role="dialog" aria-labelledby="newSubMenuModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
+            
             <div class="modal-header">
             <h5 class="modal-title" id="newSubMenuModalLabel">Add New Sub Menu</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-        </div>
+            </div>
+            
+            <div class="modal-body">
 
-        <form action="<?= base_url('menu/submenu');?>" method="post">
-        <div class="modal-body">
-
-        <div class="form-group">
-            <input type="text" class="form-control" id="title" name="title" placeholder="Submenu title">
-        </div>
-
-        <div class="form-group">
-
-            <select name="menu_id" id="menu_id" class="form-control">
-                <option value="">Select menu</option>            
-                <?php foreach($menu as $m):?>
-                <option value="<?= $m['id']?>"><?= $m['name_menu']?></option>
-                <?php endforeach;?>
-            </select>
-
-        </div>
+            <form action="<?= base_url('menu/submenu');?>" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Submenu title">
+            </div>
+            
+            <div class="form-group">
+                <select name="menu_id" id="menu_id" class="form-control">
+                    <option value="">Select menu</option>            
+                    <?php foreach($menu as $m):?>
+                    <option value="<?= $m['id']?>"><?= $m['name_menu']?></option>
+                    <?php endforeach;?>
+                </select>
+            </div>
         
-        <div class="form-group">
-            <input type="text" class="form-control" id="url" name="url" placeholder="Submenu url">
-        </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="url" name="url" placeholder="Submenu url">
+            </div>
 
-        <div class="form-group">
-            <input type="text" class="form-control" id="icon" name="icon" placeholder="Submenu icon">
-        </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="icon" name="icon" placeholder="Submenu icon">
+            </div>
         
-        <div class="form-group">
-            <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
-            <label class="form-check-label" for="defaultCheck1">
-                Active ?
-            </label>
+            <div class="form-group">
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                    Active ?
+                </label>
+                </div>
+            </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- Modal delete Menu -->
+<?php 
+    foreach ($subMenu as $sm) : 
+?>
+<div class="modal fade" id="deleteSubMenuModal<?= $sm['id'];?>" tabindex="-1" role="dialog" aria-labelledby="deleteMenuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteMenuModalLabel">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>Are you sure you want to delete data <b><?= $sm['title'];?></b></p>
+            </div>
+
+            <div class="modal-footer">
+                <form action="<?= base_url('menu/deleteSubMenu');?>" method="post">
+                <input type="hidden" class="form-control" id="menu" name="id" value="<?= $sm['id']; ?>">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </form>
             </div>
         </div>
-      
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Add</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </form>
-
     </div>
-  </div>
 </div>
+<?php endforeach;?>

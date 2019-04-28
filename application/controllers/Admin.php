@@ -35,7 +35,14 @@ class Admin extends CI_Controller
             $this->load->view('templates/footer');
         }else{
             $this->db->insert('role', ['name_role' => $this->input->post('role')]);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> The role is inserted :)</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert"> The role is inserted :)
+            
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>');
+
             redirect('admin/role');
         }
 
@@ -75,8 +82,14 @@ class Admin extends CI_Controller
             $this->db->delete('access_menu', $data);
         }
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Access Change :)</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">Access Change :)
+        
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>');
+
     }
 
     public function editRole($role_id){
@@ -113,7 +126,14 @@ class Admin extends CI_Controller
             $this->db->where('id_role', $id_role);
             $this->db->update('role');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> The role is updated :)</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert"> The role is updated :)
+            
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>');
+
             redirect('admin/role');
         }
     }
@@ -124,7 +144,14 @@ class Admin extends CI_Controller
         $this->db->where('id_role', $id_role);
         $this->db->delete('role');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success role="alert"> The role is deleted :)</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert"> The role is deleted :)
+        
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>');
+        
         redirect('admin/role');
     }
 }

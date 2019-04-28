@@ -10,4 +10,13 @@ class Menu_model extends CI_Model
                 ";
         return $this->db->query($query)->result_array();
     }
+
+    public function getSubMenuEdit($id){
+        $query  ="SELECT `sub_menu`.*,  `menu`.`name_menu`
+                    FROM `sub_menu` JOIN `menu`
+                    ON `sub_menu`.`menu_id` = `menu`.`id`
+                    WHERE `sub_menu`.`id` = $id
+                ";
+        return $this->db->query($query)->result_array();
+    }
 }
