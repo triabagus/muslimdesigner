@@ -5,7 +5,8 @@
 <h1 class="h3 mb-4 text-gray-800">Submenu Management</h1>
     
     <div class="row">
-        <div class="col-lg">
+    
+        <div class="col-lg-8">
         <?php if(validation_errors()):?>
             <div class="alert alert-danger" role="alert">
                 <?= validation_errors(); ?>
@@ -49,6 +50,54 @@
         </table>
 
         </div>
+        
+        <!-- Information Menu Management -->
+        <div class="col-lg-4 ">
+        
+        <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Information</h6>
+        </div>
+        <div class="card-body">
+            <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="<?= base_url('assets/');?>img/info/undraw_personal_settings_kihd.svg" alt="info menu management">
+            </div>
+            <p>
+                I help you guys, informations menu management in here just simple but secure for every want. So i hope you interest ux experience.
+            </p>
+            
+            <!-- Card Header - Accordion -->
+            <div class="card shadow mb-2">
+                <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">Add url , where?</h6>
+                </a>
+
+                <div class="collapse" id="collapseCardExample" style="">
+                    <div class="card-body">
+                        Admin developer add menu url okay.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Header - Accordion -->
+            <div class="card shadow mb-2">
+                <a href="#collapseCardExample2" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample2">
+                    <h6 class="m-0 font-weight-bold text-primary">Icon add fa-fw </h6>
+                </a>
+                <div class="collapse" id="collapseCardExample2" style="">
+                    <div class="card-body">
+                    If you add icon , search in here <a href="https://fontawesome.com/icons?d=gallery" target="_blank" rel="font"> Fa fa-icon </a>. And you add fa-fw ,because <strong>Menu cool in sidebar admin</strong> so see deverent!
+                    </div>
+                </div>
+            </div>
+            
+            <a target="_blank" rel="helpme" href="#">Help Me →</a>
+        </div>
+        </div>
+
+        </div>
+        <!-- Information Menu Management -->
+
     </div>
 
 </div>

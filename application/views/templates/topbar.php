@@ -1,5 +1,5 @@
- <!-- Content Wrapper -->
- <div id="content-wrapper" class="d-flex flex-column">
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
 
 <!-- Main Content -->
 <div id="content">
@@ -128,7 +128,7 @@
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="member">
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
             My Profile
           </a>

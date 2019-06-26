@@ -20,6 +20,11 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$data['title']  = 'Yipyip.id';
+
+        $this->load->view('welcome/header', $data);
+        $this->load->view('welcome/topbar', $data);
+        $this->load->view('order/index', $data);
+        $this->load->view('welcome/footer');
 	}
 }

@@ -1,0 +1,12 @@
+.top-slider {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.top-slider img {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+
+}

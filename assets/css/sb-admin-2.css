@@ -531,6 +531,10 @@ kbd {
   border-radius: 0.2rem;
 }
 
+.footer-discover{
+  background-color: #3a3b45;
+}
+
 kbd kbd {
   padding: 0;
   font-size: 100%;
