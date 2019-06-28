@@ -9,5 +9,9 @@
     <!-- Active js -->
     <script src="<?= base_url('assets/');?>/user_interface/js/active.js"></script>
 
+    <a href="#" id="cardUp">
+        <img src="<?= base_url('assets/');?>/user_interface/img/core-img/cart.png" alt="">
+        <span>0</span>
+    </a>
 </body>
 </html>
