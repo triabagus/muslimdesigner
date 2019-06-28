@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Product extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,12 +20,13 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['title']  = 'Yipyip.id';
+		$data['title']  = 'Yipyip.id | Product';
 
         $this->load->view('welcome/header', $data);
         $this->load->view('welcome/search', $data);
         $this->load->view('welcome/topbar', $data);
-        $this->load->view('order/index', $data);
+        $this->load->view('order/categori-search.php', $data);
+        $this->load->view('order/all-product',$data);
         $this->load->view('order/newslatter');
         $this->load->view('welcome/footer-bar-menu');
         $this->load->view('welcome/footer');
